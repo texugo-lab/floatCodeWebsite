@@ -15,14 +15,128 @@
 	</header>
 
 	<main>
-		<h1>Hello</h1>
+		<div id="variables">
+			<h2>Variables</h2>
+	
+			<h5>Variables are declared like this:</h5>
+			<div class="code">
+				<p><n id="highlight">nmbr</n> thisIsANumber <n id="highlight"> =</n> 2.5</p>
+			</div>
+			<h5>First, the variable, then, the name and finally, the equal sign and value</h5>
+			<br>
+			<h5>List of allowed variables:</h5>
+			<div class="code">
+				<h1><n id="highlight">nmbr</n> thisIsANumber = 2.5</h1>
+				<h1><n id="highlight">strng</n> thisIsAString = "Hello World!"</h1>
+				<h1><n id="highlight">bool</n> thisIsABoolean = true</h1>
+				<h1><n id="highlight">vec2</n> thisIsAVector2 = {2.5, 2.5}</h1>
+				<h1><n id="highlight">vec3</n> thisIsAVector3 = {2.5, 2.5, 2.5}</h1>
+			</div>
+		</div>
+
+		<div class="lr"></div>
+
+		<div id="functions">
+			<h2>Functions</h2>
+	
+			<h5>Functions in Float Code are defined like this:</h5>
+			<div class="code">
+				<h1><n id="highlight">fn</n> nmbr numberFunction<n id="highlight">(nmbr arg1)</n> = {}</h1>
+			</div>
+			<h5>'fn' for saying it's a function, then the return type of the function, then name and arguments</h5>
+			<br>
+			<h5>It's used a 'return' keyword for the return value, E.G.:</h5>
+			<div class="code">
+				<h1>fn nmbr numberFunction(nmbr arg1) = {</h1>
+				<h2><n id="highlight">return</n> 2.5</h2>
+				<h1>}</h1>
+			</div>
+			<br>
+			<h5>The return value has to be of the type of the return type declared:</h5>
+			<div class="code">
+				<h1>fn nmbr numberFunction(nmbr arg1) = {</h1>
+				<h2>return <n id="highlight">"a string"</n></h2>
+				<h1>}</h1>
+			</div>
+			<h5>This would return an error</h5>
+		</div>
+
+		<div class="lr"></div>
+
+		<div id="if-else">
+			<h2>If Else Statements</h2>
+			
+			<h5>If Else Statements are declared like this:</h5>
+			
+			<div class="code">
+				<h1><n id="highlight">if condition == true</n> {</h1>
+				<h2>strng code = "Code"</h2>
+				<h1>}</h1>
+				<h1><n id="highlight">else if otherCondition == true</n> {</h1>
+				<h2>strng otherCode = "Other Code"</h2>
+				<h1>}</h1>
+				<h1><n id="highlight">else</n> {</h1>
+				<h2>strng lastCode = "Last Code"</h2>
+				<h1>}</h1>
+			</div>
+		</div>
+
+		<div class="lr"></div>
+
+		<div id="loops">
+			<h2>For, Foreach and While Loops</h2>
+			
+			<h5>While, For and Foreach Loops are very similar, but they are declared differently:</h5>
+			<div class="code">
+				<h1><n id="highlight">forEach a in b</n> {</h1>
+				<h2></h2>
+				<h1>}</h1>
+				<br>
+				<h1><n id="highlight">for i..bSize</n> {</h1>
+				<h2>nmbr a = b[i]</h2>
+				<h1>}</h1>
+				<br>
+				<h1>nmbr i = 0</h1>
+				<h1><n id="highlight">while i <= bSize</n> {</h1>
+				<h2>nmbr a = b[i]</h2>
+				<h2>i++</h2>
+				<h1>}</h1>
+			</div>
+			<h5>All do the same, loop through every item 'a' in the array 'b'</h5>
+		</div>
+
+		<div class="lr"></div>
+
+		<h2>Comments</h2>
+
+		<h5>Comments can be single-line and multi-line:</h5>
+		<div class="code">
+			<h1><n id="highlight">#</n> single-line comment</h1>
+			<h1><n id="highlight">#-</n></h1>
+			<h2>multi-line comment</h2>
+			<h1><n id="highlight"> -#</n></h1>
+		</div>
+
+		<div class="lr"></div>
+
+		<h2>Semicolons</h2>
+
+		<h5>Semicolons in most cases are optional:</h5>
+		<div class="code">
+			<h1>strng works = "Without"</h1>
+			<h1>strng alsoWorks = "With"<n id="highlight">;</n></h1>
+		</div>
+		<h5>But in some cases, they are necessary:</h5>
+		<div class="code">
+			<h1>nmbr thisWorks = 2.5<n id="highlight">;</n> strng withThe = "semicolon"</h1>
+			<h1>nmbr DoesntWork = 2.5 strng withoutThe = "semicolon"</h1>
+		</div>
+		<h5>This would give an error because of the lack of a semicolon</h5>
 	</main>
 
 	<nav>
 		<ul class="sidebar">	
-			<li onclick='toggleSidebar("-31vw")'><a id="hide">
-				<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4d4d4d"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
-			</a></li>
+			<li onclick='toggleSidebar("-31vw")'><a id="hide"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4d4d4d"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
 
 			<li><a onclick="openSite('https://github.com/texugo-lab/fcc---Float-Code-Compiler')">Github</a></li>
 			<li><a onclick="openSite('index.html')">Home</a></li>
@@ -40,9 +154,7 @@
 			<li><a class="active">Syntax</a></li>
 			<li><a onclick="window.open('fcc.exe')">Download</a></li>
 
-			<li id="sidebarButton" onclick='toggleSidebar("0")'><a id="show">
-				<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#b3b3b3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-			</a></li>
+			<li id="sidebarButton" onclick='toggleSidebar("0")'><a id="show"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#b3b3b3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
 		</ul>
 	</nav>
 </body>
