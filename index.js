@@ -35,25 +35,13 @@ function toggleMode() {
 function openSite(site) {
 	window.open(site, "_self");
 }
-
-function toggleSidebar(option){
-	const sidebar = document.querySelector('.sidebar');
-	sidebar.style.right = option;
+if(document.querySelector('.sidebar')){
+	document.querySelector('.sidebar').style.right = "-46vw";
 }
-
-document.getElementById("github").addEventListener("click", () => {
-	openSite('https://github.com/texugo-lab/fcc---Float-Code-Compiler');
-})
-document.getElementById("home").addEventListener("click", () => {
-	let element = document.getElementById("home");
-	openSite('index.html');
-	setAnimationsDuration("0.7s");
-})
-document.getElementById("syntax").addEventListener("click", () => {
-	openSite('syntax.html');
-	setAnimationsDuration("0.7s");
-})
-document.getElementById("download").addEventListener("click", () => {
-	window.open("fcc.exe");
-	setAnimationsDuration("0.7s");
-})
+function toggleSidebar(){
+	let sidebar = document.querySelector('.sidebar');
+	if(sidebar.style.right == "0px")
+		sidebar.style.right = "-46vw";
+	else if(sidebar.style.right == "-46vw")
+		sidebar.style.right = "0px";
+}
