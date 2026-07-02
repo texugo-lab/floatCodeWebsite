@@ -16,24 +16,13 @@ const disableDarkmode = () => {
 }
 const setAnimationsDuration = (duration) => {
 	document.body.style.transitionDuration = duration;
-	document.querySelectorAll("#theme-switch #dark-mode").forEach((item) => {
-		item.style.transitionDuration = duration;
-	})
-	document.querySelectorAll("#theme-switch #light-mode").forEach((item) => {
-		item.style.transitionDuration = duration;
-	})
-	document.querySelectorAll("header").forEach((item) => {
-		item.style.transitionDuration = duration;
-	})
-	document.querySelectorAll("nav").forEach((item) => {
-		item.style.transitionDuration = duration;
-	})
-	document.querySelectorAll(".code").forEach((item) => {
-		item.style.transitionDuration = duration;
-	})
-	document.querySelectorAll("nav a").forEach((item) => {
-		item.style.transitionDuration = duration;
-	})
+	document.querySelectorAll("#theme-switch #dark-mode").forEach((item) => {item.style.transitionDuration = duration;})
+	document.querySelectorAll("#theme-switch #light-mode").forEach((item) => {item.style.transitionDuration = duration;})
+	document.querySelectorAll("header").forEach((item) => {item.style.transitionDuration = duration;})
+	document.querySelectorAll("nav").forEach((item) => {item.style.transitionDuration = duration;})
+	document.querySelectorAll(".code").forEach((item) => {item.style.transitionDuration = duration;})
+	document.querySelectorAll("nav a").forEach((item) => {item.style.transitionDuration = duration;})
+	document.querySelectorAll("svg").forEach((item) => {item.style.transitionDuration = duration;})
 
 }
 
