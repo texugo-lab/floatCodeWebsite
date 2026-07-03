@@ -16,20 +16,27 @@ const disableDarkmode = () => {
 }
 const setAnimationsDuration = (duration) => {
 	document.body.style.transitionDuration = duration;
-	document.querySelectorAll("#theme-switch #dark-mode").forEach((item) => {item.style.transitionDuration = duration;})
-	document.querySelectorAll("#theme-switch #light-mode").forEach((item) => {item.style.transitionDuration = duration;})
-	document.querySelectorAll("header").forEach((item) => {item.style.transitionDuration = duration;})
-	document.querySelectorAll("nav").forEach((item) => {item.style.transitionDuration = duration;})
-	document.querySelectorAll(".code").forEach((item) => {item.style.transitionDuration = duration;})
-	document.querySelectorAll("nav a").forEach((item) => {item.style.transitionDuration = duration;})
-	document.querySelectorAll("svg").forEach((item) => {item.style.transitionDuration = duration;})
-
+	if(document.querySelectorAll("#theme-switch #dark-mode")) document.querySelectorAll("#theme-switch #dark-mode").forEach((item) => {item.style.transitionDuration = duration;});
+	if(document.querySelectorAll("#theme-switch #light-mode")) document.querySelectorAll("#theme-switch #light-mode").forEach((item) => {item.style.transitionDuration = duration;});
+	if(document.querySelectorAll("#header")) document.querySelectorAll("header").forEach((item) => {item.style.transitionDuration = duration;});
+	if(document.querySelectorAll("nav")) document.querySelectorAll("nav").forEach((item) => {item.style.transitionDuration = duration;});
+	if(document.querySelectorAll(".code")) document.querySelectorAll(".code").forEach((item) => {item.style.transitionDuration = duration;});
+	if(document.querySelectorAll("nav a")) document.querySelectorAll("nav a").forEach((item) => {item.style.transitionDuration = duration;});
+	if(document.querySelectorAll("svg")) document.querySelectorAll("svg").forEach((item) => {item.style.transitionDuration = duration;});
+	if(document.querySelectorAll("select")) document.querySelectorAll("select").forEach((item) => {item.style.transitionDuration = duration;});
+	if(document.querySelectorAll("select")) document.querySelectorAll("select").forEach((item) => {item.style.transitionDuration = duration;});
 }
 
 if(darkmode === "active")
+{
 	enableDarkmode();
+	document.querySelectorAll(".canvas *").forEach((item) => {item.style.scale = "1"})
+}
 else
+{
 	disableDarkmode();
+	document.querySelectorAll(".canvas *").forEach((item) => {item.style.scale = "1"})
+}
 function toggleMode() {
 	darkmode = localStorage.getItem('darkmode');
 	darkmode !== "active" ? enableDarkmode() : disableDarkmode();
@@ -51,3 +58,32 @@ function toggleSidebar(){
 	else if(sidebar.style.right == "-45vw")
 		sidebar.style.right = "0px";
 }
+
+// Syntax //
+
+document.querySelector("header").querySelector("select").querySelectorAll("option").forEach((item2) => {
+	item2.addEventListener("click", () => {
+		const value = document.querySelector("header").querySelector("select").value;
+		console.log(value);
+		if(document.querySelector("header").querySelector("select"))
+		{
+			if(value != "All")
+			{
+				document.querySelectorAll(".filters div").forEach((item) => {
+					if(item.id != value && item.parentElement.id != value)
+					{
+						item.style.display = "none";
+					}
+					else{
+						item.style.display = "block";
+					}
+				})
+			}
+			else{
+				document.querySelectorAll(".filters div").forEach((item) => {
+					item.style.display = "block";
+				})
+			}
+		}
+	})
+})

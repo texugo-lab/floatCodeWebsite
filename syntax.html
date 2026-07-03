@@ -9,131 +9,145 @@
 	<script src="index.js" defer></script>
 </head>
 <body>
-	
-	<header>
-		<h1>Syntax</h1>
-	</header>
 
 	<main>
-		<div id="variables">
-			<h2>Variables</h2>
-	
-			<h5>Variables are declared like this:</h5>
-			<div class="code">
-				<h1>
-					<n id="highlight">nmbr</n> thisIsANumber <n id="highlight"> =</n> 2.5
-				</h1>
-			</div>
-			<h5>First, the variable, then, the name and finally, the equal sign and value</h5>
-			<br>
-			<h5>List of allowed variables:</h5>
-			<div class="code">
-				<h1><n id="highlight">nmbr</n> thisIsANumber = 2.5</h1>
-				<h1><n id="highlight">strng</n> thisIsAString = "Hello World!"</h1>
-				<h1><n id="highlight">bool</n> thisIsABoolean = true</h1>
-				<h1><n id="highlight">vec2</n> thisIsAVector2 = {2.5, 2.5}</h1>
-				<h1><n id="highlight">vec3</n> thisIsAVector3 = {2.5, 2.5, 2.5}</h1>
-			</div>
-		</div>
-
-		<div class="lr"></div>
-
-		<div id="functions">
-			<h2>Functions</h2>
-	
-			<h5>Functions in Float Code are defined like this:</h5>
-			<div class="code">
-				<h1><n id="highlight">fn</n> nmbr numberFunction<n id="highlight">(nmbr arg1)</n> = {}</h1>
-			</div>
-			<h5>'fn' for saying it's a function, then the return type of the function, then name and arguments</h5>
-			<br>
-			<h5>It's used a 'return' keyword for the return value, E.G.:</h5>
-			<div class="code">
-				<h1>fn nmbr numberFunction(nmbr arg1) = {</h1>
-				<h2><n id="highlight">return</n> 2.5</h2>
-				<h1>}</h1>
-			</div>
-			<br>
-			<h5>The return value has to be of the type of the return type declared:</h5>
-			<div class="code">
-				<h1>fn nmbr numberFunction(nmbr arg1) = {</h1>
-				<h2>return <n id="highlight">"a string"</n></h2>
-				<h1>}</h1>
-			</div>
-			<h5>This would return an error</h5>
-		</div>
-
-		<div class="lr"></div>
-
-		<div id="if-else">
-			<h2>If Else Statements</h2>
-			
-			<h5>If Else Statements are declared like this:</h5>
-			
-			<div class="code">
-				<h1><n id="highlight">if condition == true</n> {</h1>
-				<h2>strng code = "Code"</h2>
-				<h1>}</h1>
-				<h1><n id="highlight">else if otherCondition == true</n> {</h1>
-				<h2>strng otherCode = "Other Code"</h2>
-				<h1>}</h1>
-				<h1><n id="highlight">else</n> {</h1>
-				<h2>strng lastCode = "Last Code"</h2>
-				<h1>}</h1>
-			</div>
-		</div>
-
-		<div class="lr"></div>
-
-		<div id="loops">
-			<h2>For, Foreach and While Loops</h2>
-			
-			<h5>While, For and Foreach Loops are very similar, but they are declared differently:</h5>
-			<div class="code">
-				<h1><n id="highlight">forEach a in b</n> {</h1>
-				<h2></h2>
-				<h1>}</h1>
+		<header>
+			<h1>Syntax</h1>
+			<select>
+				<option>All</option>
+				<option>Variables</option>
+				<option>Functions</option>
+				<option>If-Else Statements</option>
+				<option>Loops</option>
+				<option>Comment</option>
+				<option>Semicolon</option>
+			</select>
+		</header>
+		<div class="filters">
+			<div id="Variables">
+				<h2>Variables</h2>
+		
+				<h5>Variables are declared like this:</h5>
+				<div class="code">
+					<h1>
+						<n id="highlight">nmbr</n> thisIsANumber <n id="highlight"> =</n> 2.5
+					</h1>
+				</div>
+				<h5>First, the variable, then, the name and finally, the equal sign and value</h5>
 				<br>
-				<h1><n id="highlight">for i..bSize</n> {</h1>
-				<h2>nmbr a = b[i]</h2>
-				<h1>}</h1>
-				<br>
-				<h1>nmbr i = 0</h1>
-				<h1><n id="highlight">while i <= bSize</n> {</h1>
-				<h2>nmbr a = b[i]</h2>
-				<h2>i++</h2>
-				<h1>}</h1>
+				<h5>List of allowed variables:</h5>
+				<div class="code">
+					<h1><n id="highlight">nmbr</n> thisIsANumber = 2.5</h1>
+					<h1><n id="highlight">strng</n> thisIsAString = "Hello World!"</h1>
+					<h1><n id="highlight">bool</n> thisIsABoolean = true</h1>
+					<h1><n id="highlight">vec2</n> thisIsAVector2 = {2.5, 2.5}</h1>
+					<h1><n id="highlight">vec3</n> thisIsAVector3 = {2.5, 2.5, 2.5}</h1>
+				</div>
 			</div>
-			<h5>All do the same, loop through every item 'a' in the array 'b'</h5>
+	
+			<div class="lr"></div>
+	
+			<div id="Functions">
+				<h2>Functions</h2>
+		
+				<h5>Functions in Float Code are defined like this:</h5>
+				<div class="code">
+					<h1><n id="highlight">fn</n> nmbr numberFunction<n id="highlight">(nmbr arg1)</n> = {}</h1>
+				</div>
+				<h5>'fn' for saying it's a function, then the return type of the function, then name and arguments</h5>
+				<br>
+				<h5>It's used a 'return' keyword for the return value, E.G.:</h5>
+				<div class="code">
+					<h1>fn nmbr numberFunction(nmbr arg1) = {</h1>
+					<h2><n id="highlight">return</n> 2.5</h2>
+					<h1>}</h1>
+				</div>
+				<br>
+				<h5>The return value has to be of the type of the return type declared:</h5>
+				<div class="code">
+					<h1>fn nmbr numberFunction(nmbr arg1) = {</h1>
+					<h2>return <n id="highlight">"a string"</n></h2>
+					<h1>}</h1>
+				</div>
+				<h5>This would return an error</h5>
+			</div>
+	
+			<div class="lr"></div>
+	
+			<div id="If-Else Statements">
+				<h2>If Else Statements</h2>
+				
+				<h5>If Else Statements are declared like this:</h5>
+				
+				<div class="code">
+					<h1><n id="highlight">if condition == true</n> {</h1>
+					<h2>strng code = "Code"</h2>
+					<h1>}</h1>
+					<h1><n id="highlight">else if otherCondition == true</n> {</h1>
+					<h2>strng otherCode = "Other Code"</h2>
+					<h1>}</h1>
+					<h1><n id="highlight">else</n> {</h1>
+					<h2>strng lastCode = "Last Code"</h2>
+					<h1>}</h1>
+				</div>
+			</div>
+	
+			<div class="lr"></div>
+	
+			<div id="Loops">
+				<h2>For, Foreach and While Loops</h2>
+				
+				<h5>While, For and Foreach Loops are very similar, but they are declared differently:</h5>
+				<div class="code">
+					<h1><n id="highlight">forEach a in b</n> {</h1>
+					<h2></h2>
+					<h1>}</h1>
+					<br>
+					<h1><n id="highlight">for i..bSize</n> {</h1>
+					<h2>nmbr a = b[i]</h2>
+					<h1>}</h1>
+					<br>
+					<h1>nmbr i = 0</h1>
+					<h1><n id="highlight">while i <= bSize</n> {</h1>
+					<h2>nmbr a = b[i]</h2>
+					<h2>i++</h2>
+					<h1>}</h1>
+				</div>
+				<h5>All do the same, loop through every item 'a' in the array 'b'</h5>
+			</div>
+	
+			<div class="lr"></div>
+	
+			<div id="Comment">
+				<h2>Comments</h2>
+		
+				<h5>Comments can be single-line and multi-line:</h5>
+				<div class="code">
+					<h1><n id="highlight">#</n> single-line comment</h1>
+					<h1><n id="highlight">#-</n></h1>
+					<h2>multi-line comment</h2>
+					<h1><n id="highlight"> -#</n></h1>
+				</div>
+			</div>
+	
+			<div class="lr"></div>
+	
+			<div id="Semicolon">
+				<h2>Semicolons</h2>
+		
+				<h5>Semicolons in most cases are optional:</h5>
+				<div class="code">
+					<h1>strng works = "Without"</h1>
+					<h1>strng alsoWorks = "With"<n id="highlight">;</n></h1>
+				</div>
+				<h5>But in some cases, they are necessary:</h5>
+				<div class="code">
+					<h1>nmbr thisWorks = 2.5<n id="highlight">;</n> strng withThe = "semicolon"</h1>
+					<h1>nmbr DoesntWork = 2.5 strng withoutThe = "semicolon"</h1>
+				</div>
+				<h5>This would give an error because of the lack of a semicolon</h5>
+			</div>
 		</div>
-
-		<div class="lr"></div>
-
-		<h2>Comments</h2>
-
-		<h5>Comments can be single-line and multi-line:</h5>
-		<div class="code">
-			<h1><n id="highlight">#</n> single-line comment</h1>
-			<h1><n id="highlight">#-</n></h1>
-			<h2>multi-line comment</h2>
-			<h1><n id="highlight"> -#</n></h1>
-		</div>
-
-		<div class="lr"></div>
-
-		<h2>Semicolons</h2>
-
-		<h5>Semicolons in most cases are optional:</h5>
-		<div class="code">
-			<h1>strng works = "Without"</h1>
-			<h1>strng alsoWorks = "With"<n id="highlight">;</n></h1>
-		</div>
-		<h5>But in some cases, they are necessary:</h5>
-		<div class="code">
-			<h1>nmbr thisWorks = 2.5<n id="highlight">;</n> strng withThe = "semicolon"</h1>
-			<h1>nmbr DoesntWork = 2.5 strng withoutThe = "semicolon"</h1>
-		</div>
-		<h5>This would give an error because of the lack of a semicolon</h5>
 	</main>
 
 	<nav>
