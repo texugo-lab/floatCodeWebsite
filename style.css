@@ -17,6 +17,12 @@ url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Gei
 	--bg-light: oklch(0.97 0.025 264);
 	--code-bg: oklch(0.87 0.025 264);
 
+	--download: oklch(0.56 0.12 258);
+	--download-hover: oklch(0.62 0.12 258);
+	--download-active: oklch(0.68 0.12 258);
+	--download-border: oklch(0.40 0.12 258);
+	--download-border-muted: oklch(0.48 0.12 258);
+
 	--text: oklch(0.15 0.05 264);
 	--text-half-muted: oklch(0.4 0.05 264);
 	--text-muted: oklch(0.55 0.05 264);
@@ -51,6 +57,12 @@ url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Gei
 	--bg: oklch(0.175 0.025 264);
 	--bg-light: oklch(0.25 0.025 264);
 	--code-bg: oklch(0.175 0.025 264);
+
+	--download: oklch(0.41 0.12 258);
+	--download-hover: oklch(0.50 0.12 258);
+	--download-active: oklch(0.59 0.12 258);
+	--download-border: oklch(0.90 0.12 258);
+	--download-border-muted: oklch(0.74 0.12 258);
 
 	--text: oklch(0.95 0.05 264);
 	--text-half-muted: oklch(0.7 0.05 264);
@@ -423,7 +435,6 @@ nav #show{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-wrap: wrap;
 	
 	transition-delay: 0.7s;
 	transition: var(--ease);
@@ -441,6 +452,75 @@ nav #show{
 .canvas h6{
 	scale: 0;
 	font-size: 1.5rem;
+}
+.canvas button{
+	border: 2px solid var(--border);
+	border-top: 2px solid var(--border-muted);
+
+	--width: 150px;
+	width: var(--width);
+	margin-top: 20px;
+	margin-left: calc(50% - var(--width) / 2 - 10px - var(--width) / 2);
+	padding: 0px 30px 0 25px;
+	font-weight: 650;
+	height: 50px;
+	font-size: 1rem;
+	text-decoration: none;
+
+	display: flex;
+	align-items: center;
+	background-color: var(--bg-dark);
+	color: var(--text);
+
+	box-shadow: var(--shadow);
+
+	cursor: default;
+	transition: var(--ease);
+
+	border-radius: 1000px;
+
+	scale: 0;
+}
+.canvas #download{
+
+	--download-width: 50px;
+	width: var(--download-width);
+
+	padding: 0px 10px 0px 10px;
+
+	position: relative;
+	top: -70px;
+	margin-top: 20px;
+	margin-left: calc(50% + var(--download-width) / 2 + 10px - var(--download-width) / 2);
+
+	background-color: var(--download);
+	border-color: var(--download-border);
+	border-top-color: var(--download-border-muted);
+}
+.canvas #download:hover{
+	background-color: var(--download-hover);
+}
+.canvas #download:active{
+	background-color: var(--download-active);
+}
+.canvas button:hover{
+	background-color: var(--bg);
+
+	transition-duration: 0.2s;
+}
+.canvas button:active{
+	background-color: var(--bg-light);
+
+	transition-duration: 0.2s;
+}
+.canvas button svg{
+	height: 1.75rem;
+	width: auto;
+
+	margin-right: auto;
+}
+.darkmode .canvas button{
+	box-shadow: 0 0 0 transparent;
 }
 
 /* DROPDOWN */

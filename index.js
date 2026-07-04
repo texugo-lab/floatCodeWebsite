@@ -27,16 +27,13 @@ const setAnimationsDuration = (duration) => {
 	if(document.querySelectorAll("select")) document.querySelectorAll("select").forEach((item) => {item.style.transitionDuration = duration;});
 }
 
+document.querySelectorAll(".canvas *").forEach((item) => {
+	item.style.scale = "1";
+})
 if(darkmode === "active")
-{
 	enableDarkmode();
-	document.querySelectorAll(".canvas *").forEach((item) => {item.style.scale = "1"})
-}
 else
-{
 	disableDarkmode();
-	document.querySelectorAll(".canvas *").forEach((item) => {item.style.scale = "1"})
-}
 function toggleMode() {
 	darkmode = localStorage.getItem('darkmode');
 	darkmode !== "active" ? enableDarkmode() : disableDarkmode();
@@ -60,30 +57,32 @@ function toggleSidebar(){
 }
 
 // Syntax //
-
-document.querySelector("header").querySelector("select").querySelectorAll("option").forEach((item2) => {
-	item2.addEventListener("click", () => {
-		const value = document.querySelector("header").querySelector("select").value;
-		console.log(value);
-		if(document.querySelector("header").querySelector("select"))
-		{
-			if(value != "All")
+if(document.querySelector("header") && document.querySelector("header").querySelector("select") && document.querySelector("header").querySelector("select").querySelectorAll("option"))
+{
+	document.querySelector("header").querySelector("select").querySelectorAll("option").forEach((item2) => {
+		item2.addEventListener("click", () => {
+			const value = document.querySelector("header").querySelector("select").value;
+			console.log(value);
+			if(document.querySelector("header").querySelector("select"))
 			{
-				document.querySelectorAll(".filters div").forEach((item) => {
-					if(item.id != value && item.parentElement.id != value)
-					{
-						item.style.display = "none";
-					}
-					else{
+				if(value != "All")
+				{
+					document.querySelectorAll(".filters div").forEach((item) => {
+						if(item.id != value && item.parentElement.id != value)
+						{
+							item.style.display = "none";
+						}
+						else{
+							item.style.display = "block";
+						}
+					})
+				}
+				else{
+					document.querySelectorAll(".filters div").forEach((item) => {
 						item.style.display = "block";
-					}
-				})
+					})
+				}
 			}
-			else{
-				document.querySelectorAll(".filters div").forEach((item) => {
-					item.style.display = "block";
-				})
-			}
-		}
+		})
 	})
-})
+}
