@@ -17,10 +17,10 @@ url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Gei
 	--bg-light: oklch(0.97 0.025 264);
 	--code-bg: oklch(0.87 0.025 264);
 
-	--download: oklch(0.56 0.12 258);
-	--download-hover: oklch(0.62 0.12 258);
-	--download-active: oklch(0.68 0.12 258);
-	--download-border: oklch(0.40 0.12 258);
+	--download: oklch(0.62 0.12 258);
+	--download-hover: oklch(0.68 0.12 258);
+	--download-active: oklch(0.74 0.12 258);
+	--download-border: oklch(0.36 0.12 258);
 	--download-border-muted: oklch(0.48 0.12 258);
 
 	--text: oklch(0.15 0.05 264);
@@ -35,6 +35,7 @@ url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Gei
 
 	--border: oklch(0.6 0.05 264);
 	--border-muted: oklch(0.7 0.05 264);
+	--border-shadow: inset 0px 4px 4px hsla(0, 0%, 0%, 0.45), inset 0px 12px 12px hsla(0, 0%, 0%, 0.15);
 
 	--shadow: 0px 4px 4px hsla(0, 0%, 0%, 0.45), 0px 12px 12px hsla(0, 0%, 0%, 0.15);
 	--inverse-shadow: 0px -4px 4px hsla(0, 0%, 0%, 0.45), 0px -12px 12px hsla(0, 0%, 0%, 0.15);
@@ -58,19 +59,19 @@ url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Gei
 	--bg-light: oklch(0.25 0.025 264);
 	--code-bg: oklch(0.175 0.025 264);
 
-	--download: oklch(0.41 0.12 258);
-	--download-hover: oklch(0.50 0.12 258);
-	--download-active: oklch(0.59 0.12 258);
-	--download-border: oklch(0.90 0.12 258);
-	--download-border-muted: oklch(0.74 0.12 258);
+	--download: oklch(0.34 0.12 258);
+	--download-hover: oklch(0.40 0.12 258);
+	--download-active: oklch(0.46 0.12 258);
+	--download-border: oklch(0.88 0.12 258);
+	--download-border-muted: oklch(0.64 0.12 258);
 
 	--text: oklch(0.95 0.05 264);
 	--text-half-muted: oklch(0.7 0.05 264);
 	--text-muted: oklch(0.6 0.05 264);
 
 	--sidebar: oklch(0 0.025 264 / 0.5);
-	--sidebar-hover: oklch(0.25 0.025 264 / 0.5);
-	--sidebar-active: oklch(0.5 0.025 264 / 0.5);
+	--sidebar-hover: oklch(0.3 0.025 264 / 0.5);
+	--sidebar-active: oklch(0.6 0.025 264 / 0.5);
 
 	--highlight: oklch(0.5 0.05 264);
 
@@ -222,9 +223,11 @@ nav a{
 }
 nav a:hover{
 	background-color: var(--bg);
+	transition-duration: 0s;
 }
 nav a:active{
 	background-color: var(--bg-light);
+	transition-duration: 0s;
 }
 nav li:first-child{
 	margin-right: auto;
@@ -275,6 +278,9 @@ nav #show{
 	justify-content: flex-start;
 	transition: var(--ease);
 }
+.open{
+	right: 0px;
+}
 .sidebar li{
 	position: relative;
 	top: -50px;
@@ -319,11 +325,9 @@ nav #show{
 	border-radius: 100px;
 
 	border: 2px solid var(--border);
-	border-top: 2px solid var(--border-muted);
 	box-shadow: var(--shadow);
-}
-.darkmode #theme-switch{
-	box-shadow: 0 0 0 transparent;
+
+	transition: var(--ease);
 }
 #theme-switch:hover{
 	background-color: var(--bg);
@@ -359,6 +363,9 @@ nav #show{
 .darkmode #theme-switch #dark-mode,
 .darkmode #theme-switch #light-mode {
 	left: 17.5px;
+}
+.darkmode #theme-switch{
+	box-shadow: 0 0 0 transparent;
 }
 
 /* LINE BREAK */
@@ -455,7 +462,6 @@ nav #show{
 }
 .canvas button{
 	border: 2px solid var(--border);
-	border-top: 2px solid var(--border-muted);
 
 	--width: 150px;
 	width: var(--width);
@@ -495,7 +501,6 @@ nav #show{
 
 	background-color: var(--download);
 	border-color: var(--download-border);
-	border-top-color: var(--download-border-muted);
 }
 .canvas #download:hover{
 	background-color: var(--download-hover);
@@ -529,15 +534,14 @@ nav #show{
 select,
 ::picker(select){
 	appearance: base-select;
+	box-shadow: var(--shadow);
 }
 select{
 	transition: var(--ease);
 	border: 2px solid var(--border);
-	border-top: 2px solid var(--border-muted);
 
 	width: auto;
 	padding: 4px 8px;
-	box-shadow: var(--shadow);
 	background-color: var(--bg-dark);
 	color: var(--text);
 	border-radius: 1000px;
@@ -585,7 +589,6 @@ option:last-of-type{
 	border-radius: 10px;
 	border: 2px solid var(--border);
 	background-color: var(--border);
-	box-shadow: var(--shadow);
 }
 option:hover,
 option:focus{
@@ -606,9 +609,7 @@ option::before{
 	content: "";
 }
 
-.darkmode select{
-	box-shadow: 0 0 0 transparent;
-}
+.darkmode select,
 .darkmode ::picker(select){
 	box-shadow: 0 0 0 transparent;
 }

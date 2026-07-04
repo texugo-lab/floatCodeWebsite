@@ -21,10 +21,10 @@ const setAnimationsDuration = (duration) => {
 	if(document.querySelectorAll("#header")) document.querySelectorAll("header").forEach((item) => {item.style.transitionDuration = duration;});
 	if(document.querySelectorAll("nav")) document.querySelectorAll("nav").forEach((item) => {item.style.transitionDuration = duration;});
 	if(document.querySelectorAll(".code")) document.querySelectorAll(".code").forEach((item) => {item.style.transitionDuration = duration;});
-	if(document.querySelectorAll("nav a")) document.querySelectorAll("nav a").forEach((item) => {item.style.transitionDuration = duration;});
+	if(document.querySelectorAll(".code")) document.querySelectorAll(".canvas").forEach((item) => {item.style.transitionDuration = duration;});
 	if(document.querySelectorAll("svg")) document.querySelectorAll("svg").forEach((item) => {item.style.transitionDuration = duration;});
 	if(document.querySelectorAll("select")) document.querySelectorAll("select").forEach((item) => {item.style.transitionDuration = duration;});
-	if(document.querySelectorAll("select")) document.querySelectorAll("select").forEach((item) => {item.style.transitionDuration = duration;});
+	if(document.querySelectorAll("#theme-switch")) document.querySelectorAll("#theme-switch").forEach((item) => {item.style.transitionDuration = duration;});
 }
 
 document.querySelectorAll(".canvas *").forEach((item) => {
@@ -45,15 +45,21 @@ function toggleMode() {
 function openSite(site) {
 	window.open(site, "_self");
 }
-if(document.querySelector('.sidebar')){
-	document.querySelector('.sidebar').style.right = "-45vw";
+function getSidebar(){
+	let sidebar = document.querySelector('.sidebar');
+	let returnValue = false;
+	sidebar.classList.forEach((item) => {
+		if(item === 'open') returnValue = true;
+	})
+	return returnValue;
 }
 function toggleSidebar(){
 	let sidebar = document.querySelector('.sidebar');
-	if(sidebar.style.right == "0px")
-		sidebar.style.right = "-45vw";
-	else if(sidebar.style.right == "-45vw")
-		sidebar.style.right = "0px";
+	let sidebarOpen = getSidebar();
+	if(sidebarOpen)
+		sidebar.classList.remove('open');
+	else
+		sidebar.classList.add('open');
 }
 
 // Syntax //
@@ -62,7 +68,6 @@ if(document.querySelector("header") && document.querySelector("header").querySel
 	document.querySelector("header").querySelector("select").querySelectorAll("option").forEach((item2) => {
 		item2.addEventListener("click", () => {
 			const value = document.querySelector("header").querySelector("select").value;
-			console.log(value);
 			if(document.querySelector("header").querySelector("select"))
 			{
 				if(value != "All")
