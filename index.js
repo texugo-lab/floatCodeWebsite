@@ -1,48 +1,43 @@
+function wait(ms){return new Promise(resolve => setTimeout(resolve, ms));}
 
 // Dark mode //
 
 let darkmode = localStorage.getItem('darkmode');
-const themeSwitch = document.getElementById('theme-switch');
+let themeSwitch = null;
+if(document.getElementById('theme-switch'))
+{
+	themeSwitch = document.getElementById('theme-switch');
+}
 
-const enableDarkmode = () => {
-	setAnimationsDuration("0s");
+async function enableDarkmode(){
   	document.body.classList.add('darkmode');
   	localStorage.setItem('darkmode', 'active');
 }
-const disableDarkmode = () => {
-	setAnimationsDuration("0s");
+async function disableDarkmode(){
   	document.body.classList.remove('darkmode');
   	localStorage.setItem('darkmode', null);
-}
-const setAnimationsDuration = (duration) => {
-	document.body.style.transitionDuration = duration;
-	if(document.querySelectorAll("#theme-switch #dark-mode")) document.querySelectorAll("#theme-switch #dark-mode").forEach((item) => {item.style.transitionDuration = duration;});
-	if(document.querySelectorAll("#theme-switch #light-mode")) document.querySelectorAll("#theme-switch #light-mode").forEach((item) => {item.style.transitionDuration = duration;});
-	if(document.querySelectorAll("#header")) document.querySelectorAll("header").forEach((item) => {item.style.transitionDuration = duration;});
-	if(document.querySelectorAll("nav")) document.querySelectorAll("nav").forEach((item) => {item.style.transitionDuration = duration;});
-	if(document.querySelectorAll(".code")) document.querySelectorAll(".code").forEach((item) => {item.style.transitionDuration = duration;});
-	if(document.querySelectorAll(".code")) document.querySelectorAll(".canvas").forEach((item) => {item.style.transitionDuration = duration;});
-	if(document.querySelectorAll("svg")) document.querySelectorAll("svg").forEach((item) => {item.style.transitionDuration = duration;});
-	if(document.querySelectorAll("select")) document.querySelectorAll("select").forEach((item) => {item.style.transitionDuration = duration;});
-	if(document.querySelectorAll("#theme-switch")) document.querySelectorAll("#theme-switch").forEach((item) => {item.style.transitionDuration = duration;});
 }
 
 document.querySelectorAll(".canvas *").forEach((item) => {
 	item.style.scale = "1";
-})
+});
 if(darkmode === "active")
+{
 	enableDarkmode();
+}
 else
+{
 	disableDarkmode();
-function toggleMode() {
+}
+function toggleMode()
+{
 	darkmode = localStorage.getItem('darkmode');
 	darkmode !== "active" ? enableDarkmode() : disableDarkmode();
-	setAnimationsDuration("0.7s");
 }
 
 // End //
 
-function openSite(site) {
+function openSite(site){
 	window.open(site, "_self");
 }
 function getSidebar(){
@@ -63,6 +58,7 @@ function toggleSidebar(){
 }
 
 // Syntax //
+
 if(document.querySelector("header") && document.querySelector("header").querySelector("select") && document.querySelector("header").querySelector("select").querySelectorAll("option"))
 {
 	document.querySelector("header").querySelector("select").querySelectorAll("option").forEach((item2) => {
@@ -91,3 +87,35 @@ if(document.querySelector("header") && document.querySelector("header").querySel
 		})
 	})
 }
+
+document.addEventListener('mousemove', function frame() {
+
+});
+
+async function setAnims(){
+	document.querySelector("body").style.transitionDuration = "0s";
+	document.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((item) => {item.style.transitionDuration = "0s";});
+	document.querySelectorAll(".code").forEach((item) => {item.style.transitionDuration = "0s";});
+	document.querySelectorAll("#highlight").forEach((item) => {item.style.transitionDuration = "0s";});
+	document.querySelectorAll("header").forEach((item) => {item.style.transitionDuration = "0s";});
+	document.querySelectorAll("nav").forEach((item) => {item.style.transitionDuration = "0s";});
+	document.querySelectorAll("li").forEach((item) => {item.style.transitionDuration = "0s";});
+	document.querySelectorAll("button").forEach((item) => {item.style.transitionDuration = "0s";});
+	document.querySelectorAll(".sidebar").forEach((item) => {item.style.transitionDuration = "0s";});
+	document.querySelectorAll("svg").forEach((item) => {item.style.transitionDuration = "0s";});
+	document.querySelectorAll(".lr").forEach((item) => {item.style.transitionDuration = "0s";});
+	document.querySelectorAll("select, ::picker(select)").forEach((item) => {item.style.transitionDuration = "0s";});
+	document.querySelectorAll(".canvas").forEach((item) => {item.style.transitionDuration = "0s";});
+
+	await wait(700);
+	document.querySelectorAll("html *").forEach((item) => {
+		if(item.style.transitionDuration){
+			console.log(item);
+			item.style.transitionDuration = "0.7s";
+		}
+	})
+
+
+}
+
+setAnims();

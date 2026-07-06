@@ -4,24 +4,32 @@
 url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Geist+Mono:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
+	--margin-XS: 2px;
+	--margin-S: 4px;
+	--margin-M: 8px;
+	--margin-L: 16px;
+	--margin-XL: 32px;
+
 	--ease: all 0.7s cubic-bezier(0.5, 0.3, 0.3, 0.7);
 	--blur: blur(5px);
 
 	--scrollbar: oklch(0.25 0.025 264);
 	--scrollbar-thumb: oklch(0.45 0.025 264);
+
+	--no-shadow: 0 0 0 transparent;
 }
 
 :root{
-	--bg-dark: oklch(0.75 0.025 264);
-	--bg: oklch(0.87 0.025 264);
-	--bg-light: oklch(0.97 0.025 264);
-	--code-bg: oklch(0.87 0.025 264);
+	--bg-dark: oklch(0.70 0.025 264);
+	--bg: oklch(0.76 0.025 264);
+	--bg-light: oklch(0.82 0.025 264);
+	--bg-lighter: oklch(0.88 0.025 264);
+	--bg-lighterer: oklch(0.94 0.025 264);
 
 	--download: oklch(0.62 0.12 258);
 	--download-hover: oklch(0.68 0.12 258);
 	--download-active: oklch(0.74 0.12 258);
-	--download-border: oklch(0.36 0.12 258);
-	--download-border-muted: oklch(0.48 0.12 258);
+	--download-highlight: oklch(0.80 0.12 258);
 
 	--text: oklch(0.15 0.05 264);
 	--text-half-muted: oklch(0.4 0.05 264);
@@ -54,20 +62,21 @@ url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Gei
 
 }
 .darkmode{
-	--bg-dark: oklch(0 0.025 264);
-	--bg: oklch(0.175 0.025 264);
-	--bg-light: oklch(0.25 0.025 264);
-	--code-bg: oklch(0.175 0.025 264);
+	--bg-dark: oklch(0.1 0.025 264);
+	--bg: oklch(0.15 0.025 264);
+	--bg-light: oklch(0.2 0.025 264);
+	--bg-lighter: oklch(0.25 0.025 264);
+	--bg-lighterer: oklch(0.3 0.025 264);
 
 	--download: oklch(0.34 0.12 258);
 	--download-hover: oklch(0.40 0.12 258);
 	--download-active: oklch(0.46 0.12 258);
-	--download-border: oklch(0.88 0.12 258);
-	--download-border-muted: oklch(0.64 0.12 258);
+	--download-highlight: oklch(0.88 0.12 258);
+	--download-border: oklch(0.64 0.12 258);
 
 	--text: oklch(0.95 0.05 264);
-	--text-half-muted: oklch(0.7 0.05 264);
-	--text-muted: oklch(0.6 0.05 264);
+	--text-half-muted: oklch(0.76 0.05 264);
+	--text-muted: oklch(0.85 0.05 264);
 
 	--sidebar: oklch(0 0.025 264 / 0.5);
 	--sidebar-hover: oklch(0.3 0.025 264 / 0.5);
@@ -103,22 +112,28 @@ html{
 	scrollbar-width: none;
 }
 body{
-	background-color: var(--bg-light);
+	background-color: var(--bg-dark);
 	transition: var(--ease);
 }
 
 h1{
 	font-size: 3.4rem;
+	margin-bottom: var(--margin-XS);
 } h2{
 	font-size: 2.4rem;
+	margin-bottom: var(--margin-M);
 } h3{
 	font-size: 2.1rem;
+	margin-bottom: var(--margin-M);
 } h4{
 	font-size: 1.8rem;
+	margin-bottom: var(--margin-L);
 } h5{
 	font-size: 1.5rem;
+	margin-bottom: var(--margin-L);
 } h6{
 	font-size: 1.2rem;
+	margin-bottom: var(--margin-XL);
 }
 h1, h2{
 	color: var(--text);
@@ -132,6 +147,7 @@ h3, h4, h5, h6{
 }
 h1, h2, h3, h4, h5, h6{
 	text-wrap: balance;
+	transition: var(--ease);
 }
 
 /* HEADER */
@@ -142,7 +158,6 @@ header{
 	padding: 16px 32px;
 	background: var(--bg);
 	box-shadow: var(--shadow);
-	transition: var(--ease);
 
 	display: flex;
 	flex-wrap: wrap;
@@ -183,13 +198,13 @@ main ul *{
 /* NAVIGATION BAR */
 
 nav{
-	background: var(--bg-dark);
+	background: var(--bg-light);
 	box-shadow: var(--shadow);
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
-	transition: var(--ease);
+	height: 50px;
 
 	z-index: 999;
 }
@@ -207,11 +222,19 @@ nav li{
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+	
+	background-color: var(--bg-light);
+}
+nav a:hover{
+	background-color: var(--bg-lighter);
+}
+nav a:active{
+	background-color: var(--bg-lighterer);
 }
 nav a{
 	font-weight: 650;
 	height: 100%;
-	padding: 0 30px;
+	padding: 0 25px;
 	font-size: 1rem;
 	text-decoration: none;
 	display: flex;
@@ -219,37 +242,20 @@ nav a{
 	color: var(--text);
 
 	cursor: default;
-	transition: var(--ease);
-}
-nav a:hover{
-	background-color: var(--bg);
-	transition-duration: 0s;
-}
-nav a:active{
-	background-color: var(--bg-light);
-	transition-duration: 0s;
 }
 nav li:first-child{
 	margin-right: auto;
 }
-svg{
-	fill: var(--text);
-	transition: var(--ease);
-}
-nav .active{
+nav a.active{
 	color: var(--selected-text);
 }
-nav .active svg{
+nav a.active svg{
 	fill: var(--selected-text);
 }
-nav #show{
-	display: none;
-	width: 50px;
-	padding: 0px;
-
-	align-items: center;
-	justify-content: center;
+svg{
+	fill: var(--text);
 }
+
 @media (max-width: 655px){
 	nav a{
 		display: none;
@@ -276,7 +282,6 @@ nav #show{
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-start;
-	transition: var(--ease);
 }
 .open{
 	right: 0px;
@@ -285,10 +290,8 @@ nav #show{
 	position: relative;
 	top: -50px;
 	width: 100%;
-}
-.sidebar a{
-	display: flex;
-	width: 100%;
+
+	background-color: transparent;
 }
 .sidebar a:hover{
 	background-color: var(--sidebar-hover);
@@ -298,13 +301,28 @@ nav #show{
 	background-color: var(--sidebar-active);
 	box-shadow: var(--shadow);
 }
+.sidebar a{
+	display: flex;
+	width: 100%;
+}
 .sidebar li:nth-child(1){
 	top: 0px;
+	margin-left: calc(100% - 50px);
+	width: 50px;
 }
 .sidebar li:nth-child(2){
 	width: calc(100% - 50px);
 }
-.sidebar #hide{
+
+#show{
+	display: none;
+	width: 50px;
+	padding: 0px;
+
+	align-items: center;
+	justify-content: center;
+}
+#hide{
 	width: 50px;
 	padding: 0px;
 	margin-left: auto;
@@ -316,56 +334,79 @@ nav #show{
 
 /* THEME */
 
-#theme-switch{
-	margin: 7px;
-	height: 35px;
-	width: 70px;
-	
-	background-color: var(--bg-dark);
-	border-radius: 100px;
+nav li:has(#theme-switch) {
 
-	border: 2px solid var(--border);
-	box-shadow: var(--shadow);
+	margin-left: 7px;
 
-	transition: var(--ease);
-}
-#theme-switch:hover{
-	background-color: var(--bg);
-}
-#theme-switch:active{
 	background-color: var(--bg-light);
+	border: 2px solid var(--bg-light);
+	border-top: 2px solid var(--highlight);
+	
+	border-radius: 100px;
+	height: 35px;
+	width:  70px;
+
+	box-shadow: var(--shadow);
+}
+nav li:has(#theme-switch:hover) {
+	background-color: var(--bg-lighter);
+	border: 2px solid var(--bg-lighter);
+	border-top: 2px solid var(--highlight);
+}
+nav li:has(#theme-switch:active) {
+	background-color: var(--bg-lighterer);
+	border: 2px solid var(--bg-lighterer);
+	border-top: 2px solid var(--highlight);
+}
+
+#theme-switch{
+	height: calc(100% + 4px);
+	width:  calc(100% + 4px);
+	
+	border-radius: 100px;
+	border: 0;
+
+	background-color: transparent;
 }
 #theme-switch svg{
+	margin-top: -4px;
 	height: 100%;
-	width: 100%;
+	width:  50%;
+	transition: var(--ease);
 }
 #theme-switch #light-mode{
 	top: -31px;
 }
-#theme-switch #dark-mode,
-#theme-switch #light-mode {
+#theme-switch #dark-mode{
+	top: 4.5px;
+}
+#theme-switch #dark-mode, #theme-switch #light-mode {
 	display: block;
 	position: relative;
-	transition: var(--ease);
 }
-#theme-switch #dark-mode,
-#theme-switch #light-mode {
-	left: -17.5px;
+#theme-switch #dark-mode, #theme-switch #light-mode {
+	left: 0px;
 }
-#theme-switch #dark-mode,
-.darkmode #theme-switch #light-mode{
+#theme-switch #dark-mode{
 	opacity: 0;
 }
-#theme-switch #light-mode,
-.darkmode #theme-switch #dark-mode{
+#theme-switch #light-mode{
 	opacity: 1;
 }
-.darkmode #theme-switch #dark-mode,
+
 .darkmode #theme-switch #light-mode {
-	left: 17.5px;
+	opacity: 0;
 }
-.darkmode #theme-switch{
-	box-shadow: 0 0 0 transparent;
+.darkmode #theme-switch #dark-mode {
+	opacity: 1;
+}
+.darkmode #theme-switch #dark-mode, .darkmode #theme-switch #light-mode {
+	left: 35px;
+}
+.darkmode nav li:has(#theme-switch){
+	border: 2px solid var(--border);
+	border-top: 2px solid var(--highlight);
+	box-shadow: var(--no-shadow);
 }
 
 /* LINE BREAK */
@@ -377,24 +418,26 @@ nav #show{
 	margin-top: 2.5rem;
 	margin-bottom: 2rem;
 	margin-left: calc((100% - var(--width)) / 2);
-
-	/* background-color: var(--bg-dark); */
 	
-	background: linear-gradient(-90deg, transparent, var(--bg-dark)   30%, var(--bg-dark)   70%, transparent)
-}
-.darkmode .lr{
-	background: linear-gradient(-90deg, transparent, var(--highlight) 30%, var(--highlight) 70%, transparent)
+	background: linear-gradient(-90deg, transparent, var(--highlight)   30%, var(--highlight)   70%, transparent);
 }
 
 /* CODE */
 
 .code{
+	border-radius: 20px;
 	--width: 90%;
 	width: var(--width);
-	margin-left: calc((100% - var(--width)) / 2);
 
+	padding: 3px 6px;
+
+	margin-left: calc((100% - var(--width)) / 2);
+	margin-bottom: var(--margin-L);
+
+	border: 2px solid var(--bg);
+	border-top: 2px solid var(--highlight);
 	box-shadow: var(--shadow);
-	background-color: var(--code-bg);
+	background-color: var(--bg);
 
 	transition: var(--ease);
 }
@@ -432,42 +475,53 @@ nav #show{
 	content: "-> -> -> -> -> ";
 }
 
+.darkmode .code{
+	border: 2px solid var(--border);
+	border-top: 2px solid var(--highlight);
+	box-shadow: var(--no-shadow);
+}
+
 /* HOME */
 
 .canvas{
 	width: 100dvw;
 	height: calc(100dvh - 50px);
 	margin-top: 50px;
-	background-color: var(--bg);
+	background-color: var(--bg-dark);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	
-	transition-delay: 0.7s;
+
 	transition: var(--ease);
 }
 .canvas *{
 	width: 100dvw;
 	z-index: 1;
-
-	transition: var(--ease);
 }
 .canvas h1{
 	scale: 0;
-	font-size: max(4rem, 10dvw);
+	font-size: clamp(3rem, 8dvw, 6rem);
 }
 .canvas h6{
 	scale: 0;
-	font-size: 1.5rem;
+	font-size: clamp(1.5rem, 4dvw, 3dvw);
 }
 .canvas button{
-	border: 2px solid var(--border);
+	background-color: var(--bg-light);
+	border: 2px solid var(--bg-light);
+	border-top: 2px solid var(--highlight);
 
 	--width: 150px;
+	--download-width: 50px;
+
+	--padding: 10px;
+
+	--width-mean: calc((var(--width) + var(--download-width)) / 2 + var(--padding));
+
 	width: var(--width);
 	margin-top: 20px;
-	margin-left: calc(50% - var(--width) / 2 - 10px - var(--width) / 2);
-	padding: 0px 30px 0 25px;
+	margin-left: calc((50% - var(--width) / 2) - var(--width-mean) / 2);
+	padding: 0px 25px;
 	font-weight: 650;
 	height: 50px;
 	font-size: 1rem;
@@ -475,21 +529,27 @@ nav #show{
 
 	display: flex;
 	align-items: center;
-	background-color: var(--bg-dark);
 	color: var(--text);
 
 	box-shadow: var(--shadow);
 
 	cursor: default;
-	transition: var(--ease);
 
 	border-radius: 1000px;
 
 	scale: 0;
 }
+.canvas button:hover{
+	border: 2px solid var(--bg-lighter);
+	background-color: var(--bg-lighter);
+	border-top: 2px solid var(--highlight);
+}
+.canvas button:active{
+	border: 2px solid var(--bg-lighterer);
+	background-color: var(--bg-lighterer);
+	border-top: 2px solid var(--highlight);
+}
 .canvas #download{
-
-	--download-width: 50px;
 	width: var(--download-width);
 
 	padding: 0px 10px 0px 10px;
@@ -497,26 +557,21 @@ nav #show{
 	position: relative;
 	top: -70px;
 	margin-top: 20px;
-	margin-left: calc(50% + var(--download-width) / 2 + 10px - var(--download-width) / 2);
+	margin-left: calc((50% - var(--download-width) / 2) + var(--width-mean) / 2);
 
 	background-color: var(--download);
-	border-color: var(--download-border);
+	border: 2px solid var(--download);
+	border-top: 2px solid var(--download-highlight);
 }
 .canvas #download:hover{
 	background-color: var(--download-hover);
+	border: 2px solid var(--download-hover);
+	border-top: 2px solid var(--download-highlight);
 }
 .canvas #download:active{
 	background-color: var(--download-active);
-}
-.canvas button:hover{
-	background-color: var(--bg);
-
-	transition-duration: 0.2s;
-}
-.canvas button:active{
-	background-color: var(--bg-light);
-
-	transition-duration: 0.2s;
+	border: 2px solid var(--download-active);
+	border-top: 2px solid var(--download-highlight);
 }
 .canvas button svg{
 	height: 1.75rem;
@@ -524,25 +579,41 @@ nav #show{
 
 	margin-right: auto;
 }
+
 .darkmode .canvas button{
-	box-shadow: 0 0 0 transparent;
+	border: 2px solid var(--border);
+	border-top: 2px solid var(--highlight);
+	box-shadow: var(--no-shadow);
+}
+.darkmode .canvas #download{
+	background-color: var(--download);
+	border: 2px solid var(--download-border);
+	border-top: 2px solid var(--download-highlight);
+}
+.darkmode .canvas #download:hover{
+	background-color: var(--download-hover);
+}
+.darkmode .canvas #download:active{
+	background-color: var(--download-active);
 }
 
 /* DROPDOWN */
-
 
 select,
 ::picker(select){
 	appearance: base-select;
 	box-shadow: var(--shadow);
+
+	border: 2px solid var(--bg-light);
+	background-color: var(--bg-light);
+	border-top: 2px solid var(--highlight);
+	border-radius: 10px;
+
+	transition: var(--ease);
 }
 select{
-	transition: var(--ease);
-	border: 2px solid var(--border);
-
 	width: auto;
 	padding: 4px 8px;
-	background-color: var(--bg-dark);
 	color: var(--text);
 	border-radius: 1000px;
 
@@ -552,29 +623,39 @@ select{
 	justify-content: center;
 	align-items: center;
 }
-select:hover,
-select:focus{
-	background-color: var(--bg);
+select:hover{
+	border: 2px solid var(--bg-lighter);
+	background-color: var(--bg-lighter);
+	border-top: 2px solid var(--highlight);
 }
 select::picker-icon{
-	rotate: 180deg;
-	transition: var(--ease);
+	content: "";
+	display: inline-block;
+	background-color: var(--text-half-muted);
 
-	align-content: center;
-	font-size: 0.75rem
+	height: 1.25rem;
+	width:  1.25rem;
+	vertical-align: top;
+	mask-size: contain;
+	mask-repeat: no-repeat;
+	mask-image: url(images/chevron-down.svg);
+
+	rotate: 180deg;
+
+	transition: var(--ease);
 }
 select:open::picker-icon{
 	rotate: 0deg;
 }
 
+::picker(select) {
+	background-color: var(--bg-light);
+}
 option{
 	display: flex;
 	justify-content: flex-start;
 
-	background-color: var(--bg-dark);
 	color: var(--text-half-muted);
-
-	border-bottom: 2px solid var(--border-muted);
 
 	width: auto;
 }
@@ -585,15 +666,10 @@ option:last-of-type{
 	border-radius: 0 0 8px 8px;
 	border-bottom: 0px;
 }
-::picker(select){
-	border-radius: 10px;
-	border: 2px solid var(--border);
-	background-color: var(--border);
-}
-option:hover,
-option:focus{
-	background-color: var(--bg);
+option:hover, option:focus{
+	background-color: var(--bg-lighter);
 	color: var(--text);
+	box-shadow: var(--shadow);
 }
 option::checkmark{
 	order: 1;
@@ -602,14 +678,20 @@ option::checkmark{
 	content: "";
 }
 option:checked{
-	font-weight: 750;
+	color: var(--selected-text);
+	font-weight: 650;
+	box-shadow: var(--shadow);
+	background-color: var(--bg-lighterer);
+
+	position: relative;
 }
 option::before{
 	margin-left: 0.25rem;
 	content: "";
 }
 
-.darkmode select,
-.darkmode ::picker(select){
-	box-shadow: 0 0 0 transparent;
+.darkmode select, .darkmode ::picker(select){
+	box-shadow: var(--no-shadow);
+	border: 2px solid var(--border);
+	border-top: 2px solid var(--highlight);
 }
