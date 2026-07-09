@@ -4,13 +4,15 @@
 url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Geist+Mono:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
+	--liquid-glass: url(#liquid-glass);
+
 	--margin-XS: 2px;
 	--margin-S: 4px;
 	--margin-M: 8px;
 	--margin-L: 16px;
 	--margin-XL: 32px;
 
-	--ease: all 0.7s cubic-bezier(0.5, 0.3, 0.3, 0.7);
+	--ease: all 0.7s cubic-bezier(0.5, 0.5, 0.3, 0.7);
 	--blur: blur(5px);
 
 	--scrollbar: oklch(0.25 0.025 264);
@@ -32,6 +34,7 @@ url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Gei
 	--download-highlight: oklch(0.80 0.12 258);
 
 	--text: oklch(0.15 0.05 264);
+	--inverse-text: oklch(0.95 0.05 264);
 	--text-half-muted: oklch(0.4 0.05 264);
 	--text-muted: oklch(0.55 0.05 264);
 
@@ -62,11 +65,11 @@ url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Gei
 
 }
 .darkmode{
-	--bg-dark: oklch(0.1 0.025 264);
-	--bg: oklch(0.15 0.025 264);
-	--bg-light: oklch(0.2 0.025 264);
-	--bg-lighter: oklch(0.25 0.025 264);
-	--bg-lighterer: oklch(0.3 0.025 264);
+	--bg-dark: oklch(0.15 0.025 264);
+	--bg: oklch(0.2 0.025 264);
+	--bg-light: oklch(0.25 0.025 264);
+	--bg-lighter: oklch(0.3 0.025 264);
+	--bg-lighterer: oklch(0.35 0.025 264);
 
 	--download: oklch(0.34 0.12 258);
 	--download-hover: oklch(0.40 0.12 258);
@@ -75,6 +78,7 @@ url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Gei
 	--download-border: oklch(0.64 0.12 258);
 
 	--text: oklch(0.95 0.05 264);
+	--inverse-text: oklch(0.15 0.05 264);
 	--text-half-muted: oklch(0.76 0.05 264);
 	--text-muted: oklch(0.85 0.05 264);
 
@@ -118,22 +122,22 @@ body{
 
 h1{
 	font-size: 3.4rem;
-	margin-bottom: var(--margin-XS);
+	margin-top: var(--margin-XS);
 } h2{
 	font-size: 2.4rem;
-	margin-bottom: var(--margin-M);
+	margin-top: var(--margin-M);
 } h3{
 	font-size: 2.1rem;
-	margin-bottom: var(--margin-M);
+	margin-top: var(--margin-M);
 } h4{
 	font-size: 1.8rem;
-	margin-bottom: var(--margin-L);
+	margin-top: var(--margin-L);
 } h5{
 	font-size: 1.5rem;
-	margin-bottom: var(--margin-L);
+	margin-top: var(--margin-L);
 } h6{
 	font-size: 1.2rem;
-	margin-bottom: var(--margin-XL);
+	margin-top: var(--margin-XL);
 }
 h1, h2{
 	color: var(--text);
@@ -147,6 +151,10 @@ h3, h4, h5, h6{
 }
 h1, h2, h3, h4, h5, h6{
 	text-wrap: balance;
+	transition: var(--ease);
+}
+
+p{
 	transition: var(--ease);
 }
 
@@ -168,14 +176,12 @@ header *{
 	width: 100dvw;
 }
 #description{
-	color: transparent;
-   background: linear-gradient(180deg, var(--text-muted), transparent);
-   background-clip: text;
+	color: var(--text-half-muted);
+	margin: 0;
 }
 #description b{
-	color: transparent;
-   background: linear-gradient(180deg, var(--text) 0%, transparent 75%);
-   background-clip: text;
+	color: var(--text);
+	transition: var(--ease);
 }
 
 /* BOLD */
@@ -256,62 +262,95 @@ svg{
 	fill: var(--text);
 }
 
-@media (max-width: 655px){
+@media (max-width: 700px){
 	nav a{
 		display: none;
 	}
 	nav #show{
 		display: flex;
 	}
+	aside.open{
+		right: 0px;
+	}
 }
 
 /* SIDEBAR */
 
-.sidebar{
+aside{
 	position: fixed;
 	top: 0;
 	right: -45.1vw;
 	height: 100vh;
 	width: 45vw;
-	z-index: 999;
+	z-index: 1000;
 	background-color: var(--sidebar);
-	backdrop-filter: var(--blur);
+	backdrop-filter: var(--liquid-glass);
 	box-shadow: var(--sidebar-shadow);
 
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-start;
+
+	transition: var(--ease);
 }
-.open{
-	right: 0px;
+aside svg{
+	height: 1.5rem;
 }
-.sidebar li{
+nav ul{
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+aside li{
+	height: 50px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	
+	background-color: var(--bg-light);
 	position: relative;
 	top: -50px;
 	width: 100%;
 
 	background-color: transparent;
 }
-.sidebar a:hover{
+aside a:hover{
 	background-color: var(--sidebar-hover);
 	box-shadow: var(--shadow);
 }
-.sidebar a:active{
+aside a:active{
 	background-color: var(--sidebar-active);
 	box-shadow: var(--shadow);
 }
-.sidebar a{
+aside a{
+	font-weight: 650;
+	height: 100%;
+	padding: 0 25px;
+	font-size: 1rem;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	color: var(--text);
+
+	cursor: default;
 	display: flex;
 	width: 100%;
 }
-.sidebar li:nth-child(1){
+aside li:nth-child(1){
 	top: 0px;
 	margin-left: calc(100% - 50px);
 	width: 50px;
 }
-.sidebar li:nth-child(2){
+aside li:nth-child(2){
 	width: calc(100% - 50px);
+}
+aside a.active{
+	color: var(--selected-text);
+}
+aside a.active svg{
+	fill: var(--selected-text);
 }
 
 #show{
@@ -332,83 +371,6 @@ svg{
 	justify-content: center;
 }
 
-/* THEME */
-
-nav li:has(#theme-switch) {
-
-	margin-left: 7px;
-
-	background-color: var(--bg-light);
-	border: 2px solid var(--bg-light);
-	border-top: 2px solid var(--highlight);
-	
-	border-radius: 100px;
-	height: 35px;
-	width:  70px;
-
-	box-shadow: var(--shadow);
-}
-nav li:has(#theme-switch:hover) {
-	background-color: var(--bg-lighter);
-	border: 2px solid var(--bg-lighter);
-	border-top: 2px solid var(--highlight);
-}
-nav li:has(#theme-switch:active) {
-	background-color: var(--bg-lighterer);
-	border: 2px solid var(--bg-lighterer);
-	border-top: 2px solid var(--highlight);
-}
-
-#theme-switch{
-	height: calc(100% + 4px);
-	width:  calc(100% + 4px);
-	
-	border-radius: 100px;
-	border: 0;
-
-	background-color: transparent;
-}
-#theme-switch svg{
-	margin-top: -4px;
-	height: 100%;
-	width:  50%;
-	transition: var(--ease);
-}
-#theme-switch #light-mode{
-	top: -31px;
-}
-#theme-switch #dark-mode{
-	top: 4.5px;
-}
-#theme-switch #dark-mode, #theme-switch #light-mode {
-	display: block;
-	position: relative;
-}
-#theme-switch #dark-mode, #theme-switch #light-mode {
-	left: 0px;
-}
-#theme-switch #dark-mode{
-	opacity: 0;
-}
-#theme-switch #light-mode{
-	opacity: 1;
-}
-
-.darkmode #theme-switch #light-mode {
-	opacity: 0;
-}
-.darkmode #theme-switch #dark-mode {
-	opacity: 1;
-}
-.darkmode #theme-switch #dark-mode, .darkmode #theme-switch #light-mode {
-	left: 35px;
-}
-.darkmode nav li:has(#theme-switch){
-	border: 2px solid var(--border);
-	border-top: 2px solid var(--highlight);
-	box-shadow: var(--no-shadow);
-}
-
 /* LINE BREAK */
 
 .lr{
@@ -420,6 +382,8 @@ nav li:has(#theme-switch:active) {
 	margin-left: calc((100% - var(--width)) / 2);
 	
 	background: linear-gradient(-90deg, transparent, var(--highlight)   30%, var(--highlight)   70%, transparent);
+
+	transition: var(--ease);
 }
 
 /* CODE */
@@ -432,7 +396,7 @@ nav li:has(#theme-switch:active) {
 	padding: 3px 6px;
 
 	margin-left: calc((100% - var(--width)) / 2);
-	margin-bottom: var(--margin-L);
+	margin-top: var(--margin-L);
 
 	border: 2px solid var(--bg);
 	border-top: 2px solid var(--highlight);
@@ -483,16 +447,76 @@ nav li:has(#theme-switch:active) {
 
 /* HOME */
 
+button {
+	background-color: oklch(from var(--bg-light) l c h / 0.2);
+	border: 2px solid oklch(from var(--bg-lighterer) l c h / 0.4);
+
+	width: 200px;
+	height: 250px;
+	color: var(--text);
+
+	border-radius: 30px;
+
+	box-shadow: var(--shadow);
+	
+	backdrop-filter: var(--liquid-glass);
+}
+button:hover{
+	background-color: oklch(from var(--bg-lighter) l c h / 0.6);
+	border: 2px solid oklch(from var(--bg-lighterer) l c h / 0.7);
+}
+button:active{
+	background-color: oklch(from var(--bg-lighterer) l c h / 1);
+	border: 2px solid oklch(from var(--bg-lighterer) l c h / 1);
+}
+
+.darkmode button{
+	box-shadow: var(--no-shadow);
+}
+
 .canvas{
+	background: url("images/background.png");
+	background-size: 200dvw;
+	animation: infinite 20000s move linear;
+
 	width: 100dvw;
 	height: calc(100dvh - 50px);
 	margin-top: 50px;
-	background-color: var(--bg-dark);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+
+	display: grid;
+	align-content: center;
 
 	transition: var(--ease);
+}
+@keyframes move{
+	from {
+		background-position-x: -200000dvw;
+		background-position-y: -150000dvw;
+	}
+}
+.canvas div{
+	background-color: oklch(from var(--bg-dark) l c h / 0.65);
+	height: calc(100dvh - 50px);
+	display: grid;
+	align-content: center;
+
+	transition: var(--ease);
+}
+.canvas div::before {
+	background-color: oklch(from var(--bg-light) l c h / 0.2);
+	border: 2px solid oklch(from var(--bg-lighterer) l c h / 0.4);
+
+	border-radius: 30px;
+
+	content: "";
+	height: 180px;
+	width: 90%;
+	
+	position: fixed;
+	top: calc(50dvh - 170px);
+	left: 5%;
+
+	backdrop-filter: var(--liquid-glass);
 }
 .canvas *{
 	width: 100dvw;
@@ -500,17 +524,17 @@ nav li:has(#theme-switch:active) {
 }
 .canvas h1{
 	scale: 0;
-	font-size: clamp(3rem, 8dvw, 6rem);
+	font-size: clamp(3rem, 8vw, 6rem);
+	position: relative;
+	top: 40px;
 }
 .canvas h6{
 	scale: 0;
-	font-size: clamp(1.5rem, 4dvw, 3dvw);
+	font-size: clamp(1.5rem, 4vw, 3dvw);
+	position: relative;
+	top: 40px;
 }
 .canvas button{
-	background-color: var(--bg-light);
-	border: 2px solid var(--bg-light);
-	border-top: 2px solid var(--highlight);
-
 	--width: 150px;
 	--download-width: 50px;
 
@@ -519,7 +543,7 @@ nav li:has(#theme-switch:active) {
 	--width-mean: calc((var(--width) + var(--download-width)) / 2 + var(--padding));
 
 	width: var(--width);
-	margin-top: 20px;
+	margin-top: 80px;
 	margin-left: calc((50% - var(--width) / 2) - var(--width-mean) / 2);
 	padding: 0px 25px;
 	font-weight: 650;
@@ -531,25 +555,11 @@ nav li:has(#theme-switch:active) {
 	align-items: center;
 	color: var(--text);
 
-	box-shadow: var(--shadow);
-
 	cursor: default;
-
-	border-radius: 1000px;
 
 	scale: 0;
 }
-.canvas button:hover{
-	border: 2px solid var(--bg-lighter);
-	background-color: var(--bg-lighter);
-	border-top: 2px solid var(--highlight);
-}
-.canvas button:active{
-	border: 2px solid var(--bg-lighterer);
-	background-color: var(--bg-lighterer);
-	border-top: 2px solid var(--highlight);
-}
-.canvas #download{
+.canvas .download{
 	width: var(--download-width);
 
 	padding: 0px 10px 0px 10px;
@@ -559,19 +569,40 @@ nav li:has(#theme-switch:active) {
 	margin-top: 20px;
 	margin-left: calc((50% - var(--download-width) / 2) + var(--width-mean) / 2);
 
-	background-color: var(--download);
-	border: 2px solid var(--download);
-	border-top: 2px solid var(--download-highlight);
+	background-color: oklch(from var(--download) l c h / 0.6);
+	border: 2px solid oklch(from var(--download) l c h / 0.9);
 }
-.canvas #download:hover{
-	background-color: var(--download-hover);
-	border: 2px solid var(--download-hover);
-	border-top: 2px solid var(--download-highlight);
+.canvas .download:hover{
+	background-color: oklch(from var(--download) l c h / 0.8);
+	border: 2px solid oklch(from var(--download) l c h / 0.9);
 }
-.canvas #download:active{
+.canvas .download:active{
+	background-color: oklch(from var(--download) l c h / 1);
+	border: 2px solid oklch(from var(--download) l c h / 0.9);
+}
+.canvas #download-windows, .canvas #download-linux, .canvas #download-macos {
+	padding: 0px 10px 0px 10px;
+
+	top: 10px;
+	width: var(--width);
+	right: calc(var(--width) / 2 + var(--width) + 40px);
+}
+.canvas #download-windows:hover, .canvas #download-linux:hover, .canvas #download-macos:hover {
+	background-color: oklch(from var(--download) l c h / 0.8);
+	border: 2px solid oklch(from var(--download) l c h / 0.9);
+}
+.canvas #download-windows:active, .canvas #download-linux:active, .canvas #download-macos:active {
 	background-color: var(--download-active);
 	border: 2px solid var(--download-active);
 	border-top: 2px solid var(--download-highlight);
+}
+.canvas #download-linux {
+	top: -60px;
+	right: calc(var(--width) / 2 + 20px);
+}
+.canvas #download-macos {
+	top: -130px;
+	right: calc(0px - var(--width) / 2);
 }
 .canvas button svg{
 	height: 1.75rem;
@@ -580,21 +611,52 @@ nav li:has(#theme-switch:active) {
 	margin-right: auto;
 }
 
-.darkmode .canvas button{
-	border: 2px solid var(--border);
-	border-top: 2px solid var(--highlight);
-	box-shadow: var(--no-shadow);
+/* THEME */
+
+#theme-switch{
+	margin-left: 7px;
+	height: 40px;
+	width: 80px;
+
+	border-radius: 100px;
+
+	box-shadow: var(--shadow);
+
+	transition: var(--ease);
 }
-.darkmode .canvas #download{
-	background-color: var(--download);
-	border: 2px solid var(--download-border);
-	border-top: 2px solid var(--download-highlight);
+#theme-switch svg{
+	height: 100%;
+	width: 100%;
 }
-.darkmode .canvas #download:hover{
-	background-color: var(--download-hover);
+#theme-switch #light-mode{
+	top: -36px;
 }
-.darkmode .canvas #download:active{
-	background-color: var(--download-active);
+#theme-switch #dark-mode, #theme-switch #light-mode {
+	display: block;
+	position: relative;
+	transition: var(--ease);
+}
+#theme-switch #dark-mode, #theme-switch #light-mode {
+	left: -17.5px;
+}
+#theme-switch #dark-mode {
+	opacity: 0;
+}
+#theme-switch #light-mode {
+	opacity: 1;
+}
+
+.darkmode #theme-switch #light-mode{
+	opacity: 0;
+}
+.darkmode #theme-switch #dark-mode{
+	opacity: 1;
+}
+.darkmode #theme-switch #dark-mode, .darkmode #theme-switch #light-mode {
+	left: 17.5px;
+}
+.darkmode #theme-switch{
+	box-shadow: 0 0 0 transparent;
 }
 
 /* DROPDOWN */
@@ -604,9 +666,8 @@ select,
 	appearance: base-select;
 	box-shadow: var(--shadow);
 
-	border: 2px solid var(--bg-light);
+	border: 2px solid var(--bg-lighterer);
 	background-color: var(--bg-light);
-	border-top: 2px solid var(--highlight);
 	border-radius: 10px;
 
 	transition: var(--ease);
@@ -624,9 +685,8 @@ select{
 	align-items: center;
 }
 select:hover{
-	border: 2px solid var(--bg-lighter);
+	border: 2px solid var(--bg-lighterer);
 	background-color: var(--bg-lighter);
-	border-top: 2px solid var(--highlight);
 }
 select::picker-icon{
 	content: "";
@@ -647,10 +707,22 @@ select::picker-icon{
 select:open::picker-icon{
 	rotate: 0deg;
 }
+select#bottom {
+	position: fixed;
+	bottom: 20px;
 
-::picker(select) {
-	background-color: var(--bg-light);
+	background-color: oklch(from var(--bg-light) l c h / 0.2);
+	border: 2px solid oklch(from var(--bg-lighterer) l c h / 0.4);
+
+	backdrop-filter: var(--liquid-glass)blur(1.5px);
 }
+select#bottom::picker-icon {
+	rotate: 0deg;
+}
+select#bottom:open::picker-icon {
+	rotate: 180deg;
+}
+
 option{
 	display: flex;
 	justify-content: flex-start;
@@ -659,11 +731,7 @@ option{
 
 	width: auto;
 }
-option:first-of-type{
-	border-radius: 8px 8px 0 0;
-}
 option:last-of-type{
-	border-radius: 0 0 8px 8px;
 	border-bottom: 0px;
 }
 option:hover, option:focus{

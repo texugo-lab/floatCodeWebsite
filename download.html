@@ -4,192 +4,33 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Float Code</title>
+
 	<link rel="icon" href="images/icon.png">
 	<link rel="stylesheet" href="style.css">
-	<script src="index.js" defer></script>
+
+	<script type="text/javascript" src="index.js" defer></script>
+	<script type="text/javascript" src="navbar.js" defer></script>
+	<script type="text/javascript" src="sidebar.js" defer></script>
 </head>
 <body>
-
 	<main>
-		<header>
-			<h1>Syntax</h1>
-			<select>
-					<option>All</option>
-					<option>Variables</option>
-					<option>Functions</option>
-					<option>If-Else Statements</option>
-					<option>Loops</option>
-					<option>Comment</option>
-					<option>Semicolon</option>
-					<option>Mathematic Operators</option>
-			</select>
-			<select id="bottom">
-					<option>All</option>
-					<option>Variables</option>
-					<option>Functions</option>
-					<option>If-Else Statements</option>
-					<option>Loops</option>
-					<option>Comment</option>
-					<option>Semicolon</option>
-					<option>Mathematic Operators</option>
-			</select>
-		</header>
-		<div class="filters">
-			<div id="Variables">
-				<h2>Variables</h2>
-		
-				<h5>Variables are declared like this:</h5>
-				<div class="code">
-					<h1>
-						<n id="highlight">nmbr</n> thisIsANumber <n id="highlight"> =</n> 2.5
-					</h1>
-				</div>
-				<h5>First, the variable, then, the name and finally, the equal sign and value</h5>
-				<br>
-				<h5>List of allowed variables:</h5>
-				<div class="code">
-					<h1><n id="highlight">nmbr</n> thisIsANumber = 2.5</h1>
-					<h1><n id="highlight">strng</n> thisIsAString = "Hello World!"</h1>
-					<h1><n id="highlight">bool</n> thisIsABoolean = true</h1>
-					<h1><n id="highlight">vec2</n> thisIsAVector2 = {2.5, 2.5}</h1>
-					<h1><n id="highlight">vec3</n> thisIsAVector3 = {2.5, 2.5, 2.5}</h1>
-				</div>
-			</div>
-	
-			<div class="lr"></div>
-	
-			<div id="Functions">
-				<h2>Functions</h2>
-		
-				<h5>Functions in Float Code are defined like this:</h5>
-				<div class="code">
-					<h1><n id="highlight">fn</n> nmbr numberFunction<n id="highlight">(nmbr arg1)</n> = {}</h1>
-				</div>
-				<h5>'fn' for saying it's a function, then the return type of the function, then name and arguments</h5>
-				<br>
-				<h5>It's used a 'return' keyword for the return value, E.G.:</h5>
-				<div class="code">
-					<h1>fn nmbr numberFunction(nmbr arg1) = {</h1>
-					<h2><n id="highlight">return</n> 2.5</h2>
-					<h1>}</h1>
-				</div>
-				<br>
-				<h5>The return value has to be of the type of the return type declared:</h5>
-				<div class="code">
-					<h1>fn <n id="highlight">nmbr</n> numberFunction(nmbr arg1) = {</h1>
-					<h2>return <n id="highlight">"a string"</n></h2>
-					<h1>}</h1>
-				</div>
-				<h5>This would return an error</h5>
-			</div>
-	
-			<div class="lr"></div>
-	
-			<div id="If-Else Statements">
-				<h2>If Else Statements</h2>
-				
-				<h5>If Else Statements are declared like this:</h5>
-				
-				<div class="code">
-					<h1><n id="highlight">if condition == true</n> {</h1>
-					<h2>strng code = "Code"</h2>
-					<h1>}</h1>
-					<h1><n id="highlight">else if otherCondition == true</n> {</h1>
-					<h2>strng otherCode = "Other Code"</h2>
-					<h1>}</h1>
-					<h1><n id="highlight">else</n> {</h1>
-					<h2>strng lastCode = "Last Code"</h2>
-					<h1>}</h1>
-				</div>
-			</div>
-	
-			<div class="lr"></div>
-	
-			<div id="Loops">
-				<h2>For, Foreach and While Loops</h2>
-				
-				<h5>While, For and Foreach Loops are very similar, but they are declared differently:</h5>
-				<div class="code">
-					<h1><n id="highlight">forEach a in b</n> {</h1>
-					<h2></h2>
-					<h1>}</h1>
-					<br>
-					<h1><n id="highlight">for i..bSize</n> {</h1>
-					<h2>nmbr a = b[i]</h2>
-					<h1>}</h1>
-					<br>
-					<h1>nmbr i = 0</h1>
-					<h1><n id="highlight">while i <= bSize</n> {</h1>
-					<h2>nmbr a = b[i]</h2>
-					<h2>i++</h2>
-					<h1>}</h1>
-				</div>
-				<h5>All do the same, loop through every item 'a' in the array 'b'</h5>
-			</div>
-	
-			<div class="lr"></div>
-	
-			<div id="Comment">
-				<h2>Comments</h2>
-		
-				<h5>Comments can be single-line and multi-line:</h5>
-				<div class="code">
-					<h1><n id="highlight">#</n> single-line comment</h1>
-					<h1><n id="highlight">#-</n></h1>
-					<h2>multi-line comment</h2>
-					<h1><n id="highlight"> -#</n></h1>
-				</div>
-			</div>
-	
-			<div class="lr"></div>
-	
-			<div id="Semicolon">
-				<h2>Semicolons</h2>
-		
-				<h5>Semicolons in most cases are optional:</h5>
-				<div class="code">
-					<h1>strng works = "Without"</h1>
-					<h1>strng alsoWorks = "With"<n id="highlight">;</n></h1>
-				</div> 
-				<h5>But in some cases, they are necessary:</h5>
-				<div class="code">
-					<h1>nmbr thisWorks = 2<n id="highlight">;</n> nmbr number = 2</h1>
-					<h1>nmbr thisDoesntWork = 2 nmbr number = 2</h1>
-				</div>
-				<h5>This would give an error because of the lack of a semicolon</h5>
-			</div>
-
-			<div class="lr"></div>
-
-			<div id="Mathematic Operators">
-				<h2>Mathematic Operators</h2>
-
-				<h5>All the built-in math operators are as follows:</h5>
-				<h6>• Addition</h6>
-				<div class="code"><h1>2 <n id="highlight">+</n> 2</h1></div>
-
-				<h6>• Subtraction</h6>
-				<div class="code"><h1>2 <n id="highlight">-</n> 2</h1></div>
-
-				<h6>• Multiplication</h6>
-				<div class="code"><h1>2 <n id="highlight">*</n> 2</h1></div>
-
-				<h6>• Division</h6>
-				<div class="code"><h1>2 <n id="highlight">/</n> 2</h1></div>
-
-				<h6>• Potentiacion</h6>
-				<div class="code"><h1>2 <n id="highlight">^</n> 2</h1></div>
-				
-				<h6>• Radication</h6>
-				<div class="code"><h1>2 <n id="highlight">//</n> 2</h1></div>
-				
-				<!-- <h6>• Logarithm</h6>
-				<div class="code"><h1><n id="highlight">log</n>(2, 2)</h1></div> -->
-
+		<div class="canvas">
+			<div>
+				<button id="download-windows" class="download" onclick="window.open('downloads/fcc.exe')">
+					<svg width="800px" height="800px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-60.000000, -7439.000000)" fill="oklch(0.95 0.025 264)"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M13.1458647,7289.43426 C13.1508772,7291.43316 13.1568922,7294.82929 13.1619048,7297.46884 C16.7759398,7297.95757 20.3899749,7298.4613 23.997995,7299 C23.997995,7295.84873 24.002005,7292.71146 23.997995,7289.71311 C20.3809524,7289.71311 16.7649123,7289.43426 13.1458647,7289.43426 M4,7289.43526 L4,7296.22153 C6.72581454,7296.58933 9.45162907,7296.94113 12.1724311,7297.34291 C12.1774436,7294.71736 12.1704261,7292.0908 12.1704261,7289.46524 C9.44661654,7289.47024 6.72380952,7289.42627 4,7289.43526 M4,7281.84344 L4,7288.61071 C6.72581454,7288.61771 9.45162907,7288.57673 12.1774436,7288.57973 C12.1754386,7285.96017 12.1754386,7283.34361 12.1724311,7280.72405 C9.44461153,7281.06486 6.71679198,7281.42567 4,7281.84344 M24,7288.47179 C20.3879699,7288.48578 16.7759398,7288.54075 13.1619048,7288.55175 C13.1598997,7285.88921 13.1598997,7283.22967 13.1619048,7280.56914 C16.7689223,7280.01844 20.3839599,7279.50072 23.997995,7279 C24,7282.15826 23.997995,7285.31353 24,7288.47179" id="windows-[#174]"> </path> </g> </g> </g> </svg>
+					Windows
+				</button>
+				<button id="download-linux" class="download">
+					<svg width="800px" height="800px" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg"><path fill="oklch(0.15 0.025 264)" fill-rule="evenodd" clip-rule="evenodd" d="M4.53918 2.40715C4.82145 1.0075 6.06066 0 7.49996 0C8.93926 0 10.1785 1.0075 10.4607 2.40715L10.798 4.07944C10.9743 4.9539 11.3217 5.78562 11.8205 6.52763L12.4009 7.39103C12.7631 7.92978 12.9999 8.5385 13.0979 9.17323C13.6747 9.22167 14.1803 9.58851 14.398 10.1283L14.8897 11.3474C15.1376 11.962 14.9583 12.665 14.4455 13.0887L12.5614 14.6458C12.0128 15.0992 11.2219 15.1193 10.6506 14.6944L9.89192 14.1301C9.88189 14.1227 9.87197 14.1151 9.86216 14.1074C9.48973 14.2075 9.09793 14.261 8.69355 14.261H6.30637C5.90201 14.261 5.51023 14.2076 5.13782 14.1074C5.12802 14.1151 5.11811 14.1227 5.10808 14.1301L4.34942 14.6944C3.77811 15.1193 2.98725 15.0992 2.43863 14.6458L0.55446 13.0887C0.0417175 12.665 -0.1376 11.962 0.110281 11.3474L0.602025 10.1283C0.819715 9.58854 1.32527 9.2217 1.90198 9.17324C2 8.5385 2.2368 7.92978 2.59897 7.39103L3.17938 6.52763C3.67818 5.78562 4.02557 4.9539 4.20193 4.07944L4.53918 2.40715ZM10.8445 9.47585C10.6345 9.63293 10.4642 9.84382 10.3561 10.0938L9.58799 11.8713C9.20026 12.0979 8.75209 12.2237 8.28465 12.2237H6.7153C6.24789 12.2237 5.79975 12.0979 5.41203 11.8714L4.64386 10.0938C4.53581 9.8438 4.36552 9.6329 4.15546 9.47582C4.18121 9.15355 4.2689 8.83503 4.41853 8.53826L5.67678 6.04259L5.68433 6.05007C6.68715 7.04458 8.31304 7.04458 9.31585 6.05007L9.32324 6.04274L10.5814 8.53825C10.7311 8.83504 10.8187 9.15357 10.8445 9.47585ZM9.04068 4.26906V3.05592H8.01353V3.85713C8.23151 3.90123 8.44506 3.97371 8.64848 4.07458L9.04068 4.26906ZM6.98638 3.85718V3.05592H5.95923V4.26919L6.3517 4.07458C6.55504 3.97375 6.7685 3.90129 6.98638 3.85718ZM2.03255 10.1864C1.82255 10.1864 1.6337 10.3132 1.55571 10.5066L1.06397 11.7257C0.981339 11.9306 1.04111 12.1649 1.21203 12.3062L3.0962 13.8633C3.27907 14.0144 3.54269 14.0211 3.73313 13.8795L4.49179 13.3152C4.6813 13.1743 4.74901 12.923 4.6557 12.7071L3.69976 10.4951C3.61884 10.3078 3.43316 10.1864 3.22771 10.1864H2.03255ZM13.4443 10.5066C13.3663 10.3132 13.1775 10.1864 12.9674 10.1864H11.7723C11.5668 10.1864 11.3812 10.3078 11.3002 10.4951L10.3443 12.7071C10.251 12.923 10.3187 13.1743 10.5082 13.3152L11.2669 13.8795C11.4573 14.0211 11.7209 14.0144 11.9038 13.8633L13.788 12.3062C13.9589 12.1649 14.0187 11.9306 13.936 11.7257L13.4443 10.5066ZM6.81106 4.98568C7.24481 4.7706 7.75537 4.7706 8.18912 4.98568L8.68739 5.23275L8.58955 5.32978C7.98786 5.92649 7.01232 5.92649 6.41063 5.32978L6.31279 5.23275L6.81106 4.98568Z"/></svg>
+					Linux
+				</button>
+				<button id="download-macos" class="download">
+					<svg width="800px" height="800px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M31,0H1A1,1,0,0,0,0,1V31a1,1,0,0,0,1,1H31a1,1,0,0,0,1-1V1A1,1,0,0,0,31,0ZM2,2H14.36C11.89,7.34,11,15.52,11,15.9a1,1,0,0,0,.25.77A1,1,0,0,0,12,17h4.89a29.9,29.9,0,0,0,.25,7c-.37,0-.75.05-1.14.05A14.07,14.07,0,0,1,5.78,19.38a1,1,0,0,0-1.4-.16,1,1,0,0,0-.16,1.41A15.87,15.87,0,0,0,16,26c.53,0,1.05,0,1.55-.08A18.35,18.35,0,0,0,19.07,30H2ZM30,30H21.39a15.57,15.57,0,0,1-1.86-4.42,15.91,15.91,0,0,0,8.25-4.95,1,1,0,1,0-1.56-1.25,14.13,14.13,0,0,1-7.09,4.24A27.91,27.91,0,0,1,19,16.15,1,1,0,0,0,18,15H13.13c.34-2.59,1.36-9.12,3.46-13H30Z"/><path d="M8,13a1,1,0,0,0,1-1V9A1,1,0,0,0,7,9v3A1,1,0,0,0,8,13Z"/><path d="M24,13a1,1,0,0,0,1-1V9a1,1,0,0,0-2,0v3A1,1,0,0,0,24,13Z"/></svg>
+					MacOs
+				</button>
 			</div>
 		</div>
 	</main>
-
 
 	<aside>
 			<li onclick='toggleSidebar()'><a id="hide">
@@ -208,7 +49,7 @@
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M240-280 40-480l200-200 56 56-143 144 143 144-56 56Zm178 132-76-24 200-640 76 24-200 640Zm302-132-56-56 143-144-143-144 56-56 200 200-200 200Z"/></svg>
 				<p>Syntax</p>
 			</a></li>
-			<li><a onclick="openSite('download.html')">
+			<li><a class="active">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
 				<p>Download</p>
 			</a></li>
@@ -229,11 +70,11 @@
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
 				<p>Home</p>
 			</a></li>
-			<li><a class="active">
+			<li><a onclick="openSite('syntax.html')">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M240-280 40-480l200-200 56 56-143 144 143 144-56 56Zm178 132-76-24 200-640 76 24-200 640Zm302-132-56-56 143-144-143-144 56-56 200 200-200 200Z"/></svg>
 				<p>Syntax</p>
 			</a></li>
-			<li><a onclick="openSite('download.html')">
+			<li><a class="active">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
 				<p>Download</p>
 			</a></li>
