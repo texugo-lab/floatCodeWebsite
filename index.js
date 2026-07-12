@@ -4,7 +4,7 @@ async function start() {
 	{
 		document.querySelector("body").style.transitionDuration = "0s";
 		document.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((item) => {item.style.transitionDuration = "0s";});
-		document.querySelectorAll(".lr, .canvas, .canvas div").forEach((item) => {item.style.transitionDuration = "0s";});
+		document.querySelectorAll(".lr, .canvas, .canvas div, .canvas div::before").forEach((item) => {item.style.transitionDuration = "0s";});
 		document.querySelectorAll(".code, #highlight, #description, #description b").forEach((item) => {item.style.transitionDuration = "0s";});
 		document.querySelectorAll("header, nav").forEach((item) => {item.style.transitionDuration = "0s";});
 		document.querySelectorAll("li, p, svg, button").forEach((item) => {item.style.transitionDuration = "0s";});
@@ -51,22 +51,6 @@ function toggleMode()
 function openSite(site){
 	window.open(site, "_self");
 }
-function getSidebar(){
-	let sidebar = document.querySelector('aside');
-	let returnValue = false;
-	sidebar.classList.forEach((item) => {
-		if(item === 'open') returnValue = true;
-	})
-	return returnValue;
-}
-function toggleSidebar(){
-	let sidebar = document.querySelector('aside');
-	let sidebarOpen = getSidebar();
-	if(sidebarOpen)
-		sidebar.classList.remove('open');
-	else
-		sidebar.classList.add('open');
-}
 
 // Syntax //
 
@@ -106,11 +90,12 @@ function isElementInViewport(element) {
 }
 
 document.addEventListener('scroll', function frame() {
-	if(document.querySelector("select") && document.querySelector("select#bottom")) {
-		if(!isElementInViewport(document.querySelector("select")))
-			document.querySelector("select#bottom").style.display = "flex";
+	if(document.querySelector("select") && document.querySelector("#detection")) {
+		if(!isElementInViewport(document.querySelector("#detection"))){
+			document.querySelector("select").classList.add('scroll');
+		}
 		else
-			document.querySelector("select#bottom").style.display = "none";
+			document.querySelector("select").classList.remove('scroll');
 	}
 });
 start();

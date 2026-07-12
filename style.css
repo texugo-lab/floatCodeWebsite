@@ -269,106 +269,6 @@ svg{
 	nav #show{
 		display: flex;
 	}
-	aside.open{
-		right: 0px;
-	}
-}
-
-/* SIDEBAR */
-
-aside{
-	position: fixed;
-	top: 0;
-	right: -45.1vw;
-	height: 100vh;
-	width: 45vw;
-	z-index: 1000;
-	background-color: var(--sidebar);
-	backdrop-filter: var(--liquid-glass);
-	box-shadow: var(--sidebar-shadow);
-
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-start;
-
-	transition: var(--ease);
-}
-aside svg{
-	height: 1.5rem;
-}
-nav ul{
-	width: 100%;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-}
-aside li{
-	height: 50px;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	
-	background-color: var(--bg-light);
-	position: relative;
-	top: -50px;
-	width: 100%;
-
-	background-color: transparent;
-}
-aside a:hover{
-	background-color: var(--sidebar-hover);
-	box-shadow: var(--shadow);
-}
-aside a:active{
-	background-color: var(--sidebar-active);
-	box-shadow: var(--shadow);
-}
-aside a{
-	font-weight: 650;
-	height: 100%;
-	padding: 0 25px;
-	font-size: 1rem;
-	text-decoration: none;
-	display: flex;
-	align-items: center;
-	color: var(--text);
-
-	cursor: default;
-	display: flex;
-	width: 100%;
-}
-aside li:nth-child(1){
-	top: 0px;
-	margin-left: calc(100% - 50px);
-	width: 50px;
-}
-aside li:nth-child(2){
-	width: calc(100% - 50px);
-}
-aside a.active{
-	color: var(--selected-text);
-}
-aside a.active svg{
-	fill: var(--selected-text);
-}
-
-#show{
-	display: none;
-	width: 50px;
-	padding: 0px;
-
-	align-items: center;
-	justify-content: center;
-}
-#hide{
-	width: 50px;
-	padding: 0px;
-	margin-left: auto;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 
 /* LINE BREAK */
@@ -517,6 +417,8 @@ button:active{
 	left: 5%;
 
 	backdrop-filter: var(--liquid-glass);
+
+	transition: var(--ease);
 }
 .canvas *{
 	width: 100dvw;
@@ -707,20 +609,23 @@ select::picker-icon{
 select:open::picker-icon{
 	rotate: 0deg;
 }
-select#bottom {
-	position: fixed;
-	bottom: 20px;
-
+select#top {
+	height: 38px;
+	position: absolute;
+	top: 140px;
 	background-color: oklch(from var(--bg-light) l c h / 0.2);
 	border: 2px solid oklch(from var(--bg-lighterer) l c h / 0.4);
 
 	backdrop-filter: var(--liquid-glass)blur(1.5px);
+	transition: var(--ease);
+	transition-property: background-color, border, color;
 }
-select#bottom::picker-icon {
-	rotate: 0deg;
+select#top.scroll {
+	position: fixed;
+	top: 60px;
 }
-select#bottom:open::picker-icon {
-	rotate: 180deg;
+#detection {
+	height: 38px;
 }
 
 option{
@@ -762,4 +667,94 @@ option::before{
 	box-shadow: var(--no-shadow);
 	border: 2px solid var(--border);
 	border-top: 2px solid var(--highlight);
+}
+
+/* SIDEBAR */
+
+#aside{
+	height: 100vh;
+	width: 45vw;
+	z-index: 1000;
+	background-color: var(--sidebar);
+	backdrop-filter: var(--liquid-glass);
+	box-shadow: var(--sidebar-shadow);
+	position: fixed;
+	inset: unset;
+	margin: 0;
+	right: -45vw;
+	
+	display: flex;
+	flex-direction: column;
+	border: 0;
+
+	transition: var(--ease);
+}
+#aside:popover-open {
+	right: 0;
+	
+}
+#aside svg{
+	height: 1.5rem;
+}
+nav ul{
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+#aside li{
+	height: 50px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	
+	background-color: var(--bg-light);
+	position: relative;
+	width: 100%;
+
+	background-color: transparent;
+}
+#aside a:hover{
+	background-color: var(--sidebar-hover);
+	box-shadow: var(--shadow);
+}
+#aside a:active{
+	background-color: var(--sidebar-active);
+	box-shadow: var(--shadow);
+}
+#aside a{
+	font-weight: 650;
+	height: 100%;
+	padding: 0 25px;
+	font-size: 1rem;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	color: var(--text);
+
+	cursor: default;
+	display: flex;
+	width: 100%;
+}
+#aside a.active{
+	color: var(--selected-text);
+}
+#aside a.active svg{
+	fill: var(--selected-text);
+}
+
+#show{
+	cursor: default;
+	display: none;
+	width: 50px;
+	height: 50px;
+	border-radius: 0;
+	padding: 0px;
+	border: 0;
+	box-shadow: var(--no-shadow);
+
+	align-items: center;
+	justify-content: center;
+	
+	transition: all 0s linear;
 }
